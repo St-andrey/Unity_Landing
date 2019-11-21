@@ -17,6 +17,9 @@ a {
 li {
   list-style: none;
 }
+abbr {
+  text-transform: uppercase;
+}
 .container-outer {
   max-width: 1960px;
   padding-left: 20px;
@@ -24,6 +27,7 @@ li {
   &--main {
     background: linear-gradient(to right, white calc(100% - 1px), $stripesColor 1px);
     background-size: calc(100% / 6) 1px;
+    z-index: -50;
   }
 }
 .container-inner {
@@ -33,6 +37,10 @@ li {
 .logo {
   font-style: 1.125rem;
   font-weight: 600;
+}
+.caps {
+  display: inline-block;
+  text-transform: capitalize;
 }
 .section-header {
   color: $textMain;
@@ -46,13 +54,14 @@ li {
   text-transform: uppercase;
   &__sentence {
     font-weight: 700;
+    line-height: 90px;
     &--accented {
       color: $accentColor2;
     }
   }
-  &__sentence:not(:last-child) {
-    margin-bottom: 15px;
-  }
+  /*&__sentence:not(:last-child) {
+    margin-bottom: -7px;
+  }*/
 }
 
 /*--===HEADER===--*/
@@ -80,7 +89,6 @@ li {
     font-size: 1.75em;
     font-weight: 300;
     line-height: 1.57em;
-    margin-bottom: 50px;
     &::first-letter {
       text-transform: capitalize;
     }
@@ -103,69 +111,150 @@ li {
       background: $accentColor1;
       display: block;
       position: absolute;
-      width: 82%;
-      height: 85%;
       opacity: 0.5;
-      left: 0;
+      top: 119px;
+      right: 142px;
       bottom: 123px;
+      left: 0;
     }
     &__text {
-      font-size: 3.3rem;
-      margin-top: 510px;
+      font-size: 3.2rem;
+      margin-top: 560px;
       padding-right: 34px;
       padding-bottom: 25px;
       width: 50%;
     }
     &__sentence {
-      display: inline-block;
       font-weight: 500;
-      &::first-letter {
-        text-transform: uppercase;
-      }
     }
   }
   &-main {
     flex-basis: 58%;
     margin-left: 13px;
+    background: url(../img/circle-white.svg) top 94px left 31% no-repeat,
+      url(../img/slash.svg) top 29px left 31% no-repeat, url(../img/circle-accented.png) top 171px left 69% no-repeat,
+      url(../img/cross-accented.svg) bottom 77px left 27% no-repeat;
     &__header {
-      margin-top: 218px;
+      margin-top: 247px;
       margin-bottom: 40px;
     }
-    &__slogan {position: relative;
-        &:before{
-            content:'';
-            font-family: fontAwesome;
-            display: block;
-            background:linear-gradient(rgba(255, 0, 0, .5)),
-            url(../img/plus1.png);
-            position: absolute;
-            width: 80%;
-            height: 120%;
-            top: 110px;
-            left: 46px;
-
-        }
+    &__slogan {
+      position: relative;
+      z-index: 50;
+      &:before {
+        content: "";
+        display: block;
+        background: linear-gradient(to right, transparent 49%, $crossesColor, transparent 51%),
+          linear-gradient(to top, transparent 49%, $crossesColor, transparent 51%);
+        background-size: calc(100% / 30) 1px, 1px calc(100% / 12);
+        position: absolute;
+        width: 75%;
+        height: 294px;
+        top: 145px;
+        right: 74px;
+        bottom: 163px;
+        left: 46px;
+        z-index: -20;
+      }
+      &:after {
+        content: "";
+        display: block;
+        background: linear-gradient(to right, $mainBg 30%, transparent 30%, transparent 70%, $mainBg 70%),
+          linear-gradient(to top, $mainBg 30%, transparent 30%, transparent 70%, $mainBg 70%);
+        background-size: calc(100% / 30) 1px, 1px calc(100% / 12);
+        position: absolute;
+        width: 75%;
+        height: 294px;
+        top: 145px;
+        right: 74px;
+        bottom: 163px;
+        left: 46px;
+        z-index: -10;
+      }
     }
   }
 }
 /*--=Ideology=--*/
 /*--=Team=--*/
-
+.team {
+  padding-top: 186px;
+  background: url(../img/triangle-filled.svg) right 23% top 208px no-repeat,
+    url(../img/circle-accented.svg) left 11% top 278px no-repeat, url(../img/slash.svg) left 298px bottom 28px no-repeat;
+  &-header {
+    padding-left: calc(16% - 3px);
+    margin-bottom: 19px;
+  }
+  &-slogan {
+    margin-bottom: 71px;
+    padding-left: calc(16% - 3px);
+  }
+  &-gallery {
+    display: flex;
+    justify-content: space-between;
+    width: 68%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &-card {
+    flex-basis: 30%;
+    display: flex;
+    padding: 24px 41px 28px;
+    transition: all .2s ease-in;
+    &__picture-box {
+      margin-right: 20px;
+    }
+    &__text-box {
+      padding-top: 10px;
+    }
+    &__name {
+      font-size: 1.25rem;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+    &__title {
+      color: $textLight;
+      margin-bottom: 23px;
+      text-transform: capitalize;
+      &--active{
+          color:$textInverted;
+      }
+    }
+    &__socials {
+      display: flex;
+      &-item:not(:last-child) {
+        margin-right: 24px;
+      }
+      &-link {
+        color: $textDark;
+        font-size: 0.75rem;
+        transition: all .2s ease-in;
+        &--active{
+            color:$textInverted;
+        }
+        &:hover {
+            color: $accentColor2;
+        }
+      }
+    }
+    &--active,
+    &:hover {
+        color: $textInverted;
+        background: $accentColor1;
+    }
+    &:hover > .team-card__title{
+        color: $textInverted;
+        background: $accentColor1;
+    }
+  }
+}
 /*--=Team=--*/
 /*--=Works=--*/
 
 /*--=Works=--*/
 /*--===/MAIN===--*/
 /*--===FOOTER===--*/
-.footer{
-    width: 100%;
-    height: 900px;
-    background: linear-gradient(to right, transparent calc(100% - 5px), black 5px),
-    linear-gradient(to top, transparent calc(100% - 5px), black 5px),
-    linear-gradient(to right,rgba(255, 0, 0, .5) 20%, rgba(0, 255, 0, .5) 20%, rgba(0, 255, 0, .5) 80%, rgba(255, 0, 0, .5) 80%),
-    linear-gradient(to top,rgba(255, 0, 0, .5) 20%, rgba(0, 255, 0, .5) 20%, rgba(0, 255, 0, .5) 80%, rgba(255, 0, 0, .5) 80%);;
-    background-size: 10% 1px, 1px 20%;
-    
+.footer {
 }
+
 /*--===/FOOTER===--*/
 @import "media";
