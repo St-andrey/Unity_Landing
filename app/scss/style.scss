@@ -67,12 +67,32 @@ abbr {
 /*--===HEADER===--*/
 .header {
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.3)), url(../img/header-bg.png);
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5)), url(../img/header-bg.png) 50% 50% no-repeat;
   background-size: cover;
-  padding-top: 40px;
-  text-transform: uppercase;
+  &-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  &-logo {
+    flex-shrink: 1;
+    &__link {
+    }
+    &__image {
+    }
+    &__title {
+    }
+  }
+  &-title {
+    flex-grow: 1;
+  }
+}
+
+.c {
+  flex-shrink: 1;
+}
+.b {
+  flex-grow: 1;
 }
 
 /*--===/HEADER===--*/
@@ -132,7 +152,7 @@ abbr {
     flex-basis: 58%;
     margin-left: 13px;
     background: url(../img/circle-white.svg) top 94px left 31% no-repeat,
-      url(../img/slash.svg) top 29px left 31% no-repeat, url(../img/circle-accented.png) top 171px left 69% no-repeat,
+      url(../img/slash.svg) top 29px left 31% no-repeat, url(../img/circle-accented.svg) top 171px left 69% no-repeat,
       url(../img/cross-accented.svg) bottom 77px left 27% no-repeat;
     &__header {
       margin-top: 247px;
@@ -199,7 +219,16 @@ abbr {
     flex-basis: 30%;
     display: flex;
     padding: 24px 41px 28px;
-    transition: all .2s ease-in;
+    transition: all 0.2s ease-in;
+    &--active,
+    &:hover {
+      color: $textInverted;
+      background: $accentColor1;
+    }
+    &:hover > .team-card__text-box p,
+    .team-card__text-box ul li a {
+      color: $textInverted;
+    }
     &__picture-box {
       margin-right: 20px;
     }
@@ -215,8 +244,9 @@ abbr {
       color: $textLight;
       margin-bottom: 23px;
       text-transform: capitalize;
-      &--active{
-          color:$textInverted;
+      transition: all 0.2s ease-in;
+      &--active {
+        color: $textInverted;
       }
     }
     &__socials {
@@ -227,28 +257,50 @@ abbr {
       &-link {
         color: $textDark;
         font-size: 0.75rem;
-        transition: all .2s ease-in;
-        &--active{
-            color:$textInverted;
+        transition: all 0.2s ease-in;
+        &--active {
+          color: $textInverted;
         }
         &:hover {
-            color: $accentColor2;
+          color: $accentColor2;
         }
       }
-    }
-    &--active,
-    &:hover {
-        color: $textInverted;
-        background: $accentColor1;
-    }
-    &:hover > .team-card__title{
-        color: $textInverted;
-        background: $accentColor1;
     }
   }
 }
 /*--=Team=--*/
 /*--=Works=--*/
+.works {
+  padding-top: 241px;
+  text-align: center;
+  &-header {
+    margin-bottom: 31px;
+  }
+  &-slogan {
+    margin-bottom: 105px;
+  }
+  
+  &-slider {
+    position: relative;
+    &__slide {
+      display: flex;
+      justify-content: flex-end;
+    }
+    &__image-box {
+      position: relative;
+    }
+  }
+  &__img {
+    display: block;
+    padding-left: 44px;
+    z-index: 10;
+  }
+  &__image-description {
+    position: absolute;
+    bottom: 0;
+    left: 44px;
+  }
+}
 
 /*--=Works=--*/
 /*--===/MAIN===--*/
