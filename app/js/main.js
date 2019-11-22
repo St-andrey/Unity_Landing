@@ -3,7 +3,7 @@ $(function(){
         dots: false,
         arrows: true,
         slidesToShow: 1,
-        prevArrow: ('.works-slider__arrows--left'),
-        nextArrow: ('.works-slider__arrows--right'),
+        prevArrow: ('.works-slider__arrow--left'),
+        nextArrow: ('.works-slider__arrow--right'),
     })
 });
