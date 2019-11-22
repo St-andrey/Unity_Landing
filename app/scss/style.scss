@@ -35,8 +35,24 @@ abbr {
   margin: 0 auto;
 }
 .logo {
-  font-style: 1.125rem;
-  font-weight: 600;
+  &__link {
+    display: flex;
+    color: $textInverted;
+  }
+  &__image {
+    display: block;
+  }
+
+  &__image:not(:last-child) {
+    margin-right: 8px;
+  }
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: 0.225rem;
+    margin-left: 15px;
+    text-transform: uppercase;
+  }
 }
 .caps {
   display: inline-block;
@@ -52,23 +68,21 @@ abbr {
   color: $textDark;
   font-size: 5.375rem;
   text-transform: uppercase;
-  &__sentence {
+  &__line {
     font-weight: 700;
     line-height: 90px;
     &--accented {
       color: $accentColor2;
     }
   }
-  /*&__sentence:not(:last-child) {
-    margin-bottom: -7px;
-  }*/
 }
 
 /*--===HEADER===--*/
 .header {
-  height: 100vh;
+  color: $textInverted;
   background: linear-gradient(rgba(0, 0, 0, 0.5)), url(../img/header-bg.png) 50% 50% no-repeat;
   background-size: cover;
+  height: 100vh;
   &-container {
     display: flex;
     flex-direction: column;
@@ -76,25 +90,75 @@ abbr {
   }
   &-logo {
     flex-shrink: 1;
-    &__link {
-    }
-    &__image {
-    }
-    &__title {
-    }
+    margin-top: 40px;
   }
   &-title {
     flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__text {
+      flex-basis: 60%;
+      font-size: 2.375rem;
+      letter-spacing: 0.475rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+  &-nav {
+    margin-bottom: 36px;
+    &__list {
+      display: flex;
+      justify-content: center;
+    }
+    &__item:not(:last-child) {
+      margin-right: 50px;
+    }
+    &__item {
+      opacity: 0.7;
+      position: relative;
+      transition: all 0.2s ease-in;
+      &:after {
+        content: "";
+        position: absolute;
+        background: $accentColor1;
+        bottom: -9px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 3px;
+        width: 120%;
+        opacity: 0;
+        transition: all 0.2s ease-in;
+      }
+
+      &:hover,
+      &:hover:after {
+        opacity: 1;
+      }
+      &--active {
+        opacity: 1;
+        &:after {
+          content: "";
+          position: absolute;
+          background: $accentColor1;
+          bottom: -9px;
+          left: 50%;
+          transform: translateX(-50%);
+          height: 3px;
+          width: 120%;
+          opacity: 1;
+        }
+      }
+    }
+    &__link {
+      color: $textInverted;
+      letter-spacing: 0.12rem;
+      text-transform: uppercase;
+      transition: all 0.2s ease-in;
+    }
   }
 }
-
-.c {
-  flex-shrink: 1;
-}
-.b {
-  flex-grow: 1;
-}
-
 /*--===/HEADER===--*/
 /*--===MAIN===--*/
 /*--=Creatives=--*/
@@ -144,7 +208,7 @@ abbr {
       padding-bottom: 25px;
       width: 50%;
     }
-    &__sentence {
+    &__line {
       font-weight: 500;
     }
   }
@@ -279,7 +343,7 @@ abbr {
   &-slogan {
     margin-bottom: 105px;
   }
-  
+
   &-slider {
     position: relative;
     &__slide {
